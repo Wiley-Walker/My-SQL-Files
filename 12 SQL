@@ -1,0 +1,3 @@
+SELECT InvoiceLine.InvoiceLineId, InvoiceLine.InvoiceId, InvoiceLine.TrackId, Track.Name as [Track Name], InvoiceLine.UnitPrice, InvoiceLine.Quantity 
+FROM InvoiceLine 
+INNER JOIN Track  ON InvoiceLine.TrackId == Track.TrackId
