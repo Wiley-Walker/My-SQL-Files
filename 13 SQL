@@ -1,0 +1,5 @@
+SELECT iL.InvoiceLineId, iL.InvoiceId, iL.TrackId, t.Name as [Name of Track], a.Name as [Name of Artist], iL.UnitPrice, iL.Quantity  
+FROM InvoiceLine iL
+INNER JOIN Track t ON iL.TrackId == t.TrackId
+INNER JOIN Album al ON t.AlbumId == al.AlbumId
+INNER JOIN Artist a ON al.ArtistId == a.ArtistId
