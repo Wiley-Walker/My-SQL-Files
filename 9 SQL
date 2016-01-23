@@ -1,1 +1,7 @@
-SELECT COUNT (DISTINCT InvoiceId) AS NumberOfInvoices FROM Invoice Where Invoice.InvoiceDate LIKE '2009%' OR Invoice.InvoiceDate LIKE '2011%'
+ 
+SELECT 
+(SELECT Count(*) FROM Invoice WHERE strftime('%Y', InvoiceDate) == '2009') as [Total Invoices from 2009],
+(SELECT Count(*) FROM Invoice WHERE strftime('%Y', InvoiceDate) == '2011') as [Total Invoices from 2011],
+(SELECT printf("$%.2f", SUM(Total)) FROM Invoice WHERE strftime('%Y', InvoiceDate) == '2009') as [Total Sales from 2009],
+(SELECT printf("$%.2f", SUM(Total)) FROM Invoice WHERE strftime('%Y', InvoiceDate) == '2011') as [Total Invoices from 2011] FROM Invoice
+LIMIT 1
